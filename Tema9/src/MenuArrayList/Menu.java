@@ -17,7 +17,10 @@ public class Menu extends ArrayList<Integer> {
             System.out.println("Introduzca 2 para buscar un número");
             System.out.println("Introduzca 3 para eliminar un número");
             System.out.println("Introduzca 4 para modificar un número dado");
-            System.out.println("Introduzca 5 para salir\n");
+            System.out.println("Introduzca 5 para mostrar la lista de valores");
+            System.out.println("Introduzca 6 para mostrar el orden ascendente");
+            System.out.println("Introduzca 7 para mostrar el orden descendente");
+            System.out.println("Introduzca 8 para salir\n");
             System.out.println("\r");
             System.out.println("Escriba una de las opciones (1-5): ");
             opcion = sc.nextInt();
@@ -27,8 +30,11 @@ public class Menu extends ArrayList<Integer> {
                 case 2 -> buscarValor();
                 case 3 -> eliminarValor();
                 case 4 -> modificarValor();
+                case 5 -> mostrarListaDeValores();
+                case 6 -> ordenarValoresAscendentes();
+                case 7 -> ordenarValoresDescendentes();
             }
-        }while(opcion != 5);
+        }while(opcion != 8);
     }
 
     public void ingresarValor(){
@@ -79,5 +85,27 @@ public class Menu extends ArrayList<Integer> {
         }else{
             System.out.println("Lo sentimos, el dato no ha podido ser modificado.");
         }
+    }
+
+    public void mostrarListaDeValores(){
+        if(!listadoDeNumeros.isEmpty()){
+            System.out.println("La lista se compone de los siguientes valores: ");
+            for (int i = 0; i< listadoDeNumeros.size(); i++){
+                System.out.println(listadoDeNumeros.get(i));
+            }
+        }else{
+            System.out.println("No existen valores en la lista.");
+        }
+    }
+
+    public void ordenarValoresAscendentes(){
+        Collections.sort(listadoDeNumeros);
+        mostrarListaDeValores();
+    }
+
+    public void ordenarValoresDescendentes(){
+        Comparator<Integer> comparador = Collections.reverseOrder();
+        Collections.sort(listadoDeNumeros, comparador);
+        mostrarListaDeValores();
     }
 }
