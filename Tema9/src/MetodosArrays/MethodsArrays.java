@@ -6,19 +6,20 @@ public class MethodsArrays {
     ArrayList<String> listaArray;
 
     public void cargarArray(){
-        listaArray.add("Pablo");
-        listaArray.add("María");
-        listaArray.add("Manuel");
-        listaArray.add("Lucía");
-        listaArray.add("Mauricio");
-        listaArray.add("Sofía");
     }
 
     public void mostrarArray(){
         if(!listaArray.isEmpty()){
             for(int i=0; i<listaArray.size(); i++){
+                int indice = listaArray.indexOf(i);
                 System.out.println(listaArray.get(i));
+                if(indice != -1){
+                    System.out.println("El nombre de " + i + " está en el índice " + indice);
+                }else{
+                    System.out.println("Caracteres introducidos no válidos.");
+                }
             }
+
         }
     }
 
